@@ -18,7 +18,24 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'bignoodle': ['Orbitron', 'Russo One', 'system-ui', 'sans-serif'],
+				'sans': ['Inter', 'system-ui', 'sans-serif'],
+			},
 			colors: {
+				/* Atlética Brand Colors */
+				'atletica-red': 'hsl(var(--atletica-red))',
+				'atletica-burgundy': 'hsl(var(--atletica-burgundy))',
+				'atletica-sand': 'hsl(var(--atletica-sand))',
+				'atletica-black': 'hsl(var(--atletica-black))',
+				'atletica-white': 'hsl(var(--atletica-white))',
+				'atletica-red-light': 'hsl(var(--atletica-red-light))',
+				'atletica-red-dark': 'hsl(var(--atletica-red-dark))',
+				'atletica-burgundy-light': 'hsl(var(--atletica-burgundy-light))',
+				'atletica-sand-light': 'hsl(var(--atletica-sand-light))',
+				'atletica-sand-dark': 'hsl(var(--atletica-sand-dark))',
+				
+				/* Semantic Tokens */
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

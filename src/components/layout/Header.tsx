@@ -7,8 +7,11 @@ const navItems = [
   { label: 'Início', href: '/' },
   { label: 'Eventos', href: '/404' },
   // { label: 'Galeria', href: '/404' },
-  { label: 'Lojinha', href: '/404' },
-  { label: 'Sócio', href: 'https://cheers.com.br/atletica-cavalo-de-troia~13572' },
+  { label: 'Lojinha', href: 'https://loja.infinitepay.io/rafaelhenriques' },
+  {
+    label: 'Sócio',
+    href: 'https://cheers.com.br/atletica-cavalo-de-troia~13572',
+  },
 ]
 
 export const Header = () => {

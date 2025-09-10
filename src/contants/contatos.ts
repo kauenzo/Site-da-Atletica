@@ -1,0 +1,3 @@
+export const CONTATOS = {
+  ESPORTES: '5548996393438',
+}

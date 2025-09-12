@@ -6,6 +6,10 @@
 All colors MUST be HSL.
 */
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
     /* Brand Colors */
@@ -14,53 +18,65 @@ All colors MUST be HSL.
     --atletica-sand: 28 48% 76%;
     --atletica-black: 0 0% 10%;
     --atletica-white: 0 0% 98%;
-    
+
     /* Enhanced Palette */
     --atletica-red-light: 358 59% 55%;
     --atletica-red-dark: 358 59% 30%;
     --atletica-burgundy-light: 356 34% 35%;
     --atletica-sand-light: 28 48% 85%;
     --atletica-sand-dark: 28 48% 65%;
-    
+
     /* Semantic Tokens */
     --background: var(--atletica-white);
     --foreground: var(--atletica-black);
-    
+
     --card: var(--atletica-white);
     --card-foreground: var(--atletica-black);
-    
+
     --popover: var(--atletica-white);
     --popover-foreground: var(--atletica-black);
-    
+
     --primary: var(--atletica-red);
     --primary-foreground: var(--atletica-white);
-    
+
     --secondary: var(--atletica-sand);
     --secondary-foreground: var(--atletica-burgundy);
-    
+
     --muted: var(--atletica-sand-light);
     --muted-foreground: var(--atletica-burgundy);
-    
+
     --accent: var(--atletica-burgundy);
     --accent-foreground: var(--atletica-white);
-    
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: var(--atletica-white);
-    
+
     --border: var(--atletica-sand);
     --input: var(--atletica-sand);
     --ring: var(--atletica-red);
-    
+
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--atletica-red)), hsl(var(--atletica-burgundy)));
-    --gradient-card: linear-gradient(180deg, hsl(var(--atletica-white)), hsl(var(--atletica-sand-light)));
-    --gradient-accent: linear-gradient(90deg, hsl(var(--atletica-red)), hsl(var(--atletica-red-light)));
-    
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(var(--atletica-red)),
+      hsl(var(--atletica-burgundy))
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(var(--atletica-white)),
+      hsl(var(--atletica-sand-light))
+    );
+    --gradient-accent: linear-gradient(
+      90deg,
+      hsl(var(--atletica-red)),
+      hsl(var(--atletica-red-light))
+    );
+
     /* Shadows */
     --shadow-card: 0 4px 20px hsl(var(--atletica-black) / 0.1);
     --shadow-hero: 0 20px 60px hsl(var(--atletica-red) / 0.3);
     --shadow-button: 0 8px 25px hsl(var(--atletica-red) / 0.4);
-    
+
     --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
@@ -134,28 +150,28 @@ All colors MUST be HSL.
   .hero-gradient {
     background: var(--gradient-hero);
   }
-  
+
   .card-gradient {
     background: var(--gradient-card);
   }
-  
+
   .accent-gradient {
     background: var(--gradient-accent);
   }
-  
+
   /* Custom Shadows */
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
-  
+
   .shadow-hero {
     box-shadow: var(--shadow-hero);
   }
-  
+
   .shadow-button {
     box-shadow: var(--shadow-button);
   }
-  
+
   /* Text Styles */
   .text-gradient {
     background: var(--gradient-accent);
@@ -163,12 +179,12 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   /* Animations */
   .hover-lift {
     @apply transition-transform duration-300 hover:scale-105 hover:-translate-y-2;
   }
-  
+
   .hover-glow {
     @apply transition-shadow duration-300 hover:shadow-button;
   }

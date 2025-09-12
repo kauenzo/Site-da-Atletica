@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 interface WhatsAppLinkParams {
   phone: string
-  message: string
+  message?: string
 }
 
 export function useWhatsAppLink() {
@@ -10,13 +10,12 @@ export function useWhatsAppLink() {
     ({ phone, message }: WhatsAppLinkParams): string => {
       // tira tudo que não é número
       const formattedPhone = phone.replace(/\D/g, '')
-      // codifica a mensagem pra URL
-      const encodedMessage = encodeURIComponent(message.trim())
-      return `https://wa.me/${formattedPhone}?text=${encodedMessage}`
+      // codifica a mensagem pra URL se existir
+      const encodedMessage = message ? `?text=${encodeURIComponent(message.trim())}` : ''
+      return `https://wa.me/${formattedPhone}${encodedMessage}`
     },
     []
   )
 
   return generateWhatsAppLink
 }
-

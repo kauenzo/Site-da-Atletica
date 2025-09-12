@@ -31,9 +31,10 @@ export const AboutSection = () => {
                 <span className='text-gradient'>ATLÉTICA</span>
               </h2>
               <p className='text-lg text-muted-foreground leading-relaxed'>
-                A Cavalo de Tróia é a atlética oficial do curso de Ciência da
-                Computação, Sistemas da Informação, ADS e Jogos Digitais, unindo
-                mais de 700 estudantes em uma comunidade forte e engajada.
+                A Cavalo de Troia é a atlética oficial dos curso de Ciência da
+                Computação, Sistemas da Informação, Analise e Desenvolvimento de
+                Sistemas e Jogos Digitais, unindo mais de 700 estudantes em uma
+                comunidade forte e engajada.
               </p>
             </div>
 
@@ -77,7 +78,7 @@ export const AboutSection = () => {
                     Tecnologia
                   </h4>
                   <p className='text-sm text-muted-foreground'>
-                    Inovação e código
+                    Inovação e aprendizado
                   </p>
                 </div>
               </div>
@@ -103,6 +104,14 @@ export const AboutSection = () => {
                     </div>
                     <div className='text-center'>
                       <div className='text-3xl font-black text-atletica-red'>
+                        {getYearsSince2018()}
+                      </div>
+                      <div className='text-sm text-atletica-burgundy'>
+                        Anos de História
+                      </div>
+                    </div>
+                    <div className='text-center'>
+                      <div className='text-3xl font-black text-atletica-red'>
                         12+
                       </div>
                       <div className='text-sm text-atletica-burgundy'>
@@ -115,14 +124,6 @@ export const AboutSection = () => {
                       </div>
                       <div className='text-sm text-atletica-burgundy'>
                         Atletas
-                      </div>
-                    </div>
-                    <div className='text-center'>
-                      <div className='text-3xl font-black text-atletica-red'>
-                        {getYearsSince2018()}
-                      </div>
-                      <div className='text-sm text-atletica-burgundy'>
-                        Anos de História
                       </div>
                     </div>
                   </div>

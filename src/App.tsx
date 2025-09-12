@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/Header'
 import Index from './pages/Index'
 import Calendar from './pages/Calendar'
 import Gallery from './pages/Gallery'
+import Links from './pages/Links'
 import Sponsor from './pages/Sponsor'
 import NotFound from './pages/NotFound'
 
@@ -35,6 +36,10 @@ const App = () => (
           <Route
             path='/apoiador'
             element={<Sponsor />}
+          />
+          <Route
+            path='/links'
+            element={<Links />}
           />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route

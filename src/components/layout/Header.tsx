@@ -2,27 +2,24 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import brasaoImage from '@/assets/brasao-atletica.png'
+import { URLS } from '@/contants/urls'
 
 const navItems = [
   { label: 'Início', href: '/' },
-  { label: 'Eventos', href: '/404' },
-  // { label: 'Galeria', href: '/404' },
-  { label: 'Lojinha', href: 'https://loja.infinitepay.io/rafaelhenriques' },
-  {
-    label: 'Sócio',
-    href: 'https://cheers.com.br/atletica-cavalo-de-troia~13572',
-  },
+  { label: 'Eventos', href: '/events' },
+  { label: 'Lojinha', href: URLS.LOJINHA },
+  { label: 'Sócio', href: URLS.CHEERS },
 ]
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100)
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -54,12 +51,12 @@ export const Header = () => {
             to='/'
             className='flex items-center justify-center'
           >
-            <div className='w-10 h-10  rounded-full shadow-md flex items-center justify-center'>
+            <div className='w-10 h-10 rounded-full shadow-md flex items-center justify-center'>
               <img
                 src={brasaoImage}
                 alt='Atlética CC Hero'
                 className='w-full h-full object-cover'
-              />{' '}
+              />
             </div>
           </Link>
 
@@ -79,26 +76,45 @@ export const Header = () => {
             ))}
           </nav>
 
-          {/* Mobile Menu */}
-          <div className='md:hidden'>
-            <select
-              value={location.pathname}
-              onChange={(e) => (window.location.href = e.target.value)}
-              className='bg-atletica-burgundy text-atletica-white border border-atletica-white/20 rounded px-2 py-1 text-sm'
+          {/* Hamburger Menu (Mobile) */}
+          <div className='md:hidden flex items-center'>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className='focus:outline-none'
+              aria-label='Abrir menu'
             >
-              {navItems.map((item) => (
-                <option
-                  key={item.href}
-                  value={item.href}
-                >
-                  {item.label}
-                </option>
-              ))}
-            </select>
+              <svg
+                className='w-7 h-7 text-atletica-white'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={2}
+                  d='M4 6h16M4 12h16M4 18h16'
+                />
+              </svg>
+            </button>
+            {menuOpen && (
+              <div className='absolute top-16 right-4 bg-atletica-burgundy rounded shadow-lg py-4 px-6 flex flex-col gap-4'>
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className='text-atletica-white hover:text-atletica-sand-light font-medium transition-colors duration-200'
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
     </header>
   )
 }
-

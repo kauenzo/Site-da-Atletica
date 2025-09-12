@@ -1,6 +1,8 @@
 import { Handshake, Star, TrendingUp, Award } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { useWhatsAppLink } from '@/hooks/use-whatsapp-link'
+import { CONTATOS } from '@/contants/contatos'
 
 const benefits = [
   {
@@ -28,6 +30,8 @@ const benefits = [
 ]
 
 export const SponsorSection = () => {
+  const generateWhatsAppLink = useWhatsAppLink()
+
   return (
     <section className='py-20 hero-gradient'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
@@ -126,7 +130,19 @@ export const SponsorSection = () => {
                 </Button>
                 {/* TODO: adicionar contato do presida */}
                 <p className='text-xs text-atletica-burgundy opacity-60'>
-                  Entre em contato para planos personalizados
+                  Para planos personalizados ou duvidas,{' '}
+                  <a
+                    href={generateWhatsAppLink({
+                      phone: CONTATOS.PRESIDENTE,
+                      message:
+                        'Olá, gostaria de saber mais sobre os planos de sócio.',
+                    })}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-atletica-red underline'
+                  >
+                    entre em contato
+                  </a>
                 </p>
               </div>
             </div>

@@ -43,7 +43,7 @@ const sports = [
   {
     name: 'E-Sports',
     icon: Gamepad2,
-    description: 'Competições virtuais de alta performance',
+    description: 'CS2, Valorant, League Of Legends, Mortal Kombat e muito mai',
   },
   {
     name: 'Corrida',

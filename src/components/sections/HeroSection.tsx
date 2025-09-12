@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
-import heroImage from '@/assets/hero-atletica.jpg'
+// import heroImage from '@/assets/hero-atletica.jpg'
+import heroImage from '@/assets/calourada.jpeg'
 import brasaoImage from '@/assets/brasao-atletica.png'
 
 export const HeroSection = () => {
@@ -40,9 +41,9 @@ export const HeroSection = () => {
           {/* Subtitle */}
           <p className='text-base sm:text-lg md:text-xl lg:text-2xl text-atletica-sand-light font-light max-w-3xl mx-auto leading-relaxed px-4'>
             A Atlética que representa a força, a garra e a união dos alunos de
-            Ciência da Computação, Sistemas da Informação, ADS e Jogos Digitais.
-            Aqui, o espírito universitário ganha vida através do esporte, da
-            festa e da amizade. Seja bem-vindo ao nosso território!
+            Ciência da Computação e tecnologias. Aqui, o espírito universitário
+            ganha vida através do esporte, da festa e da amizade. Seja bem-vindo
+            ao nosso território!
           </p>
 
           {/* CTA Buttons */}

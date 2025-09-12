@@ -2,6 +2,7 @@ import { Shield } from 'lucide-react'
 import { LINKS } from '@/contants/links'
 import bgImage from '@/assets/cavalo-chinelo.jpeg'
 import brasaoImage from '@/assets/brasao-atletica.png'
+import { Link } from 'react-router-dom'
 
 const Links = () => {
   return (
@@ -10,11 +11,13 @@ const Links = () => {
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className='flex justify-center pt-4'>
-        <img
-          src={brasaoImage}
-          alt='Atlética CC Hero'
-          className='size-32 object-cover'
-        />
+        <Link to='/'>
+          <img
+            src={brasaoImage}
+            alt='Atlética CC Hero'
+            className='size-32 object-cover cursor-pointer transition-transform hover:scale-105'
+          />
+        </Link>
       </div>
       <div className='flex flex-col items-center mt-2 sm:mt-10'>
         {LINKS.map((item, index) => (

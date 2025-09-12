@@ -10,6 +10,35 @@ export const Footer = () => {
   const formattedPhone = useFormatPhone()
   const generateWhatsAppLink = useWhatsAppLink()
 
+  const contatosInfo = [
+    {
+      href: 'mailto:atletica.aaact@unesc.net',
+      icon: Mail,
+      label: 'atletica.aaact@unesc.net',
+      external: true,
+    },
+    {
+      href: `tel:${CONTATOS.PRESIDENTE}`,
+      icon: Phone,
+      label: formattedPhone(CONTATOS.PRESIDENTE),
+      external: true,
+    },
+    {
+      href: URLS.LOCALIZACAO,
+      icon: MapPin,
+      label: 'UNESC, Bloco XXI C',
+      external: true,
+    },
+  ]
+
+  const navLinks = [
+    { href: '#about', label: 'Sobre a Atlética' },
+    { href: '#sports', label: 'Modalidades' },
+    // { href: '#events', label: 'Eventos' },
+    { href: '#sponsor', label: 'Seja Sócio' },
+    { href: '/links', label: 'Links' },
+  ]
+
   return (
     <footer className='bg-atletica-black text-atletica-white py-16'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
@@ -38,45 +67,22 @@ export const Footer = () => {
               atletas-programadores unidos pela paixão.
             </p>
           </div>
-
           {/* Quick Links */}
           <div className='space-y-6'>
             <h4 className='font-bignoodle text-lg font-black text-atletica-white'>
               NAVEGAÇÃO
             </h4>
             <ul className='space-y-3'>
-              <li>
-                <a
-                  href='#about'
-                  className='text-atletica-sand hover:text-atletica-white transition-colors duration-300'
-                >
-                  Sobre a Atlética
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#sports'
-                  className='text-atletica-sand hover:text-atletica-white transition-colors duration-300'
-                >
-                  Modalidades
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#events'
-                  className='text-atletica-sand hover:text-atletica-white transition-colors duration-300'
-                >
-                  Eventos
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#sponsor'
-                  className='text-atletica-sand hover:text-atletica-white transition-colors duration-300'
-                >
-                  Seja Sócio
-                </a>
-              </li>
+              {navLinks.map(({ href, label }, idx) => (
+                <li key={idx}>
+                  <a
+                    href={href}
+                    className='text-atletica-sand hover:text-atletica-white transition-colors duration-300'
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -86,35 +92,20 @@ export const Footer = () => {
               CONTATO
             </h4>
             <div className='space-y-3'>
-              <a
-                href='mailto:atletica.aaact@unesc.net'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='flex items-center gap-3 text-atletica-sand hover:text-atletica-white transition-colors duration-300'
-              >
-                <Mail className='w-4 h-4 text-atletica-red' />
-                <span className='text-sm'>atletica.aaact@unesc.net</span>
-              </a>
-              <a
-                href={`tel:${CONTATOS.PRESIDENTE}`}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='flex items-center gap-3 text-atletica-sand hover:text-atletica-white transition-colors duration-300'
-              >
-                <Phone className='w-4 h-4 text-atletica-red' />
-                <span className='text-sm'>
-                  {formattedPhone(CONTATOS.PRESIDENTE)}
-                </span>
-              </a>
-              <a
-                href={URLS.LOCALIZACAO}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='flex items-center gap-3 text-atletica-sand hover:text-atletica-white transition-colors duration-300'
-              >
-                <MapPin className='w-4 h-4 text-atletica-red' />
-                <span className='text-sm'>UNESC, Bloco XXI C</span>
-              </a>
+              {contatosInfo.map(
+                ({ href, icon: Icon, label, external }, idx) => (
+                  <a
+                    key={idx}
+                    href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
+                    className='flex items-center gap-3 text-atletica-sand hover:text-atletica-white transition-colors duration-300'
+                  >
+                    <Icon className='w-4 h-4 text-atletica-red' />
+                    <span className='text-sm'>{label}</span>
+                  </a>
+                )
+              )}
             </div>
 
             <Button
@@ -129,7 +120,6 @@ export const Footer = () => {
               Entre em contato
             </Button>
           </div>
-
           {/* Social Media */}
           <div className='space-y-6'>
             <h4 className='font-bignoodle text-lg font-black text-atletica-white'>

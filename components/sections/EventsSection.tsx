@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button'
-import { EventCard } from '@/components/ui/event-card'
+// import { Button } from '@/components/ui/button'
+// import { EventCard } from '@/components/ui/event-card'
 import { Trophy, Clock } from 'lucide-react'
 // import { Button } from '@/components/ui/button'
 

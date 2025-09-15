@@ -6,7 +6,11 @@ import { cn } from "@/lib/utils"
 
 export type ToastActionElement = React.ReactElement<typeof ToastAction>
 
-export type ToastProps = React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root>
+type ToastVariant = "default" | "destructive" | "success" | "warning" | "info"
+
+export type ToastProps = React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root> & {
+  variant?: ToastVariant
+}
 
 const ToastProvider = ToastPrimitives.Provider
 
@@ -27,8 +31,8 @@ ToastViewport.displayName = ToastPrimitives.Viewport.displayName
 
 const Toast = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Root>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root>
->(({ className, ...props }, ref) => {
+  ToastProps
+>(({ className, variant, ...props }, ref) => {
   return (
     <ToastPrimitives.Root
       ref={ref}

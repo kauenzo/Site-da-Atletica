@@ -10,9 +10,7 @@ const SheetTrigger = DialogPrimitive.Trigger
 
 const SheetClose = DialogPrimitive.Close
 
-const SheetPortal = ({ className, ...props }: DialogPrimitive.DialogPortalProps) => (
-  <DialogPrimitive.Portal className={className} {...props} />
-)
+const SheetPortal = DialogPrimitive.Portal
 
 const SheetOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,

@@ -1,3 +1,10 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "buildCommand": "cd app-next && pnpm install --frozen-lockfile && pnpm build",
+  "outputDirectory": "app-next/.next",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": "nextjs",
+  "rewrites": [],
+  "github": {
+    "enabled": true
+  }
 }

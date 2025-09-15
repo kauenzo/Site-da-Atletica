@@ -6,9 +6,7 @@ const nextConfig: NextConfig = {
     resolveAlias: {},
     root: __dirname,
   },
-  redirects: async () => [
-    { source: '/events', destination: '/calendario', permanent: true },
-  ],
+  redirects: async () => [],
 }
 
 export default nextConfig

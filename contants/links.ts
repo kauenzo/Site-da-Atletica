@@ -1,4 +1,5 @@
 export const LINKS = [
+  { url: 'https://forms.gle/SkQyU2UToScac4MdA', label: 'CAMISETA 7 ANOS' },
   {
     url: 'https://cheers.com.br/pagina/atletica-cavalo-de-troia~13572',
     label: 'Seja Sócio da Cavalo!',

@@ -1,7 +1,7 @@
 export const LINKS = [
   {
     label: 'CANECA E TIRANTE 2025',
-    link: 'https://forms.gle/PMgnpq5xa92UPvH36',
+    url: 'https://forms.gle/PMgnpq5xa92UPvH36',
   },
   {
     url: 'https://cheers.com.br/pagina/atletica-cavalo-de-troia~13572',

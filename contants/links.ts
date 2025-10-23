@@ -1,5 +1,8 @@
 export const LINKS = [
-  { url: 'https://forms.gle/SkQyU2UToScac4MdA', label: 'CAMISETA 7 ANOS' },
+  {
+    label: 'CANECA E TIRANTE 2025',
+    link: 'https://forms.gle/PMgnpq5xa92UPvH36',
+  },
   {
     url: 'https://cheers.com.br/pagina/atletica-cavalo-de-troia~13572',
     label: 'Seja Sócio da Cavalo!',

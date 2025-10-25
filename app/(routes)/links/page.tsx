@@ -4,10 +4,13 @@ import Link from 'next/link'
 const bgImage = '/assets/cavalo-chinelo.jpeg'
 const brasaoImage = '/assets/brasao-atletica.png'
 
-// Força revalidação a cada 60 segundos
-export const revalidate = 60
+// Desabilita cache completamente - busca dados frescos a cada reload
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 
 export default async function LinksPage() {
+  // Busca dados frescos do banco a cada reload (sem cache)
   const links = await prisma.link.findMany({
     where: {
       isActive: true,

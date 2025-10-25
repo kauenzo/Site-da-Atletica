@@ -31,14 +31,22 @@ const nextConfig: NextConfig = {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
   },
-  // Configurações de cache para produção
+  // Configurações para desabilitar cache completamente
   headers: async () => [
     {
       source: '/links',
       headers: [
         {
           key: 'Cache-Control',
-          value: 'public, max-age=60, s-maxage=60, stale-while-revalidate=300',
+          value: 'no-cache, no-store, must-revalidate, max-age=0',
+        },
+        {
+          key: 'Pragma',
+          value: 'no-cache',
+        },
+        {
+          key: 'Expires',
+          value: '0',
         },
       ],
     },

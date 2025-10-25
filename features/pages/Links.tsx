@@ -32,7 +32,7 @@ const Links = async () => {
           <a
             key={link.id}
             href={`/l/${link.slug}`}
-            className='w-2/3 text-center px-6 py-3 my-2 bg-white/15 rounded-2xl text-white text-lg font-medium shadow-md hover:bg-zinc-700/20 transition-colors duration-200'
+            className='w-2/3 text-center px-6 py-3 my-2 bg-white/15 rounded-2xl text-white text-lg font-medium shadow-md hover:bg-zinc-700/20 transition-colors duration-200 hover:scale-105'
           >
             {link.label}
           </a>

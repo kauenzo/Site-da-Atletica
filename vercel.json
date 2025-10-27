@@ -5,6 +5,11 @@
   "framework": "nextjs",
   "github": {
     "enabled": true
+  },
+  "git": {
+    "deploymentEnabled": {
+      "dev": false
+    }
   }
 }
 

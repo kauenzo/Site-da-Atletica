@@ -15,9 +15,11 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className='min-h-screen bg-gray-50'>
+    <div className='min-h-screen bg-background'>
       <AdminNav user={session.user} />
-      <main className='container mx-auto py-6 px-4'>{children}</main>
+      <main className='pl-64 min-h-screen'>
+        <div className='container mx-auto py-6 px-6'>{children}</div>
+      </main>
     </div>
   )
 }

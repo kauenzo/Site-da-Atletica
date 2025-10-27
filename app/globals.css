@@ -22,33 +22,33 @@ html {
     --atletica-sand-light: 28 48% 85%;
     --atletica-sand-dark: 28 48% 65%;
 
-    /* Semantic Tokens */
-    --background: var(--atletica-white);
-    --foreground: var(--atletica-black);
+    /* Semantic Tokens - Light Theme (zinc palette) */
+    --background: 240 5% 96%; /* zinc-50 */
+    --foreground: 240 5.9% 10%; /* zinc-900 */
 
-    --card: var(--atletica-white);
-    --card-foreground: var(--atletica-black);
+    --card: 240 5% 96%; /* zinc-100 */
+    --card-foreground: 240 5.9% 10%; /* zinc-900 */
 
-    --popover: var(--atletica-white);
-    --popover-foreground: var(--atletica-black);
+    --popover: 240 5% 96%; /* zinc-50 */
+    --popover-foreground: 240 5.9% 10%; /* zinc-900 */
 
     --primary: var(--atletica-red);
     --primary-foreground: var(--atletica-white);
 
-    --secondary: var(--atletica-sand);
-    --secondary-foreground: var(--atletica-burgundy);
+    --secondary: 240 4.8% 95.9%; /* zinc-100 */
+    --secondary-foreground: 240 5.9% 10%; /* zinc-900 */
 
-    --muted: var(--atletica-sand-light);
-    --muted-foreground: var(--atletica-burgundy);
+    --muted: 240 4.8% 95.9%; /* zinc-100 */
+    --muted-foreground: 240 3.8% 46.1%; /* zinc-500 */
 
-    --accent: var(--atletica-burgundy);
-    --accent-foreground: var(--atletica-white);
+    --accent: 240 4.8% 95.9%; /* zinc-100 */
+    --accent-foreground: 240 5.9% 10%; /* zinc-900 */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: var(--atletica-white);
 
-    --border: var(--atletica-sand);
-    --input: var(--atletica-sand);
+    --border: 240 5.9% 90%; /* zinc-200 */
+    --input: 240 5.9% 90%; /* zinc-200 */
     --ring: var(--atletica-red);
 
     /* Gradients */
@@ -87,42 +87,45 @@ html {
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Tema Dark: fundo zinc-950, cards zinc-900, texto branco */
+    --background: 240 10% 3.9%; /* zinc-950 */
+    --foreground: 0 0% 98%; /* white */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 5.9% 10%; /* zinc-900 */
+    --card-foreground: 0 0% 98%; /* white */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 5.9% 10%; /* zinc-900 */
+    --popover-foreground: 0 0% 98%; /* white */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Mantendo as cores primárias da Atlética */
+    --primary: var(--atletica-red);
+    --primary-foreground: 0 0% 98%; /* white */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 3.7% 15.9%; /* zinc-800 */
+    --secondary-foreground: 0 0% 98%; /* white */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 3.7% 15.9%; /* zinc-800 */
+    --muted-foreground: 240 5% 64.9%; /* zinc-400 */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 240 3.7% 15.9%; /* zinc-800 */
+    --accent-foreground: 0 0% 98%; /* white */
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%; /* white */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 240 3.7% 15.9%; /* zinc-800 */
+    --input: 240 3.7% 15.9%; /* zinc-800 */
+    --ring: var(--atletica-red);
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar tokens para dark mode */
+    --sidebar-background: 240 5.9% 10%; /* zinc-900 */
+    --sidebar-foreground: 0 0% 98%; /* white */
+    --sidebar-primary: var(--atletica-red);
+    --sidebar-primary-foreground: 0 0% 98%; /* white */
+    --sidebar-accent: 240 3.7% 15.9%; /* zinc-800 */
+    --sidebar-accent-foreground: 0 0% 98%; /* white */
+    --sidebar-border: 240 3.7% 15.9%; /* zinc-800 */
+    --sidebar-ring: var(--atletica-red);
   }
 }
 

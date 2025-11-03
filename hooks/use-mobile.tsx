@@ -1,19 +1,37 @@
-import * as React from "react"
+'use client'
+
+import * as React from 'react'
 
 const MOBILE_BREAKPOINT = 768
 
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
+  // Iniciar com false para evitar problemas de hidratação
+  const [isMobile, setIsMobile] = React.useState(false)
+  const [hasMounted, setHasMounted] = React.useState(false)
 
   React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
-    const onChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+    // Marcar que o componente foi montado
+    setHasMounted(true)
+
+    // Verificar o tamanho da tela apenas no cliente
+    if (typeof window !== 'undefined') {
+      const checkMobile = () => {
+        setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+      }
+
+      // Verificar inicialmente
+      checkMobile()
+
+      // Adicionar listener para mudanças de tamanho
+      window.addEventListener('resize', checkMobile)
+
+      // Limpar o listener ao desmontar
+      return () => window.removeEventListener('resize', checkMobile)
     }
-    mql.addEventListener("change", onChange)
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    return () => mql.removeEventListener("change", onChange)
   }, [])
 
-  return !!isMobile
+  // Durante a renderização do servidor ou antes da montagem, sempre retorna false
+  // Após a montagem no cliente, retorna o valor real
+  return hasMounted ? isMobile : false
 }
+

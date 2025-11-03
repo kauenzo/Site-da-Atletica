@@ -20,6 +20,12 @@ async function requireAuth() {
   return session
 }
 
+async function getNextOrder(): Promise<number> {
+  const agg = await prisma.link.aggregate({ _max: { order: true } })
+  const max = agg._max.order ?? 0
+  return max + 1
+}
+
 export async function createLink(formData: FormData) {
   const session = await requireAuth()
 
@@ -32,7 +38,8 @@ export async function createLink(formData: FormData) {
   const validatedData = CreateLinkSchema.parse(rawData)
 
   try {
-    await LinkService.create(validatedData, session.user.id)
+    const nextOrder = await getNextOrder()
+    await LinkService.create({ ...validatedData, order: nextOrder }, session.user.id)
     revalidatePath('/admin/links')
   } catch (error) {
     throw new Error('Erro ao criar link')
@@ -130,5 +137,22 @@ function generateSlugFromLabel(label: string): string {
     .replace(/\s+/g, '-') // Substitui espaços por hífens
     .replace(/-+/g, '-') // Remove hífens duplicados
     .trim()
+}
+
+export async function reorderLinks(ids: string[]) {
+  const session = await requireAuth()
+
+  try {
+    const updates = ids.map((id, index) =>
+      prisma.link.update({
+        where: { id },
+        data: { order: index + 1 },
+      })
+    )
+    await prisma.$transaction(updates)
+    revalidatePath('/admin/links')
+  } catch (error) {
+    throw new Error('Erro ao reordenar links')
+  }
 }
 

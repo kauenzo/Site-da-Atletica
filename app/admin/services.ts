@@ -12,7 +12,7 @@ export async function getDashboardStats() {
     prisma.linkClick.count(),
     prisma.link.findMany({
       take: 5,
-      orderBy: { createdAt: 'asc' },
+      orderBy: [{ order: 'asc' }, { createdAt: 'desc' }],
       include: {
         createdBy: {
           select: {

@@ -15,9 +15,7 @@ export default async function LinksPage() {
     where: {
       isActive: true,
     },
-    orderBy: {
-      createdAt: 'asc',
-    },
+    orderBy: [{ order: 'asc' }, { createdAt: 'desc' }],
   })
 
   return (

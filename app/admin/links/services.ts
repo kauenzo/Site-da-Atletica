@@ -6,7 +6,7 @@ import {
 } from '@/lib/validations/link'
 
 export class LinkService {
-  static async create(data: CreateLinkInput, createdById: string) {
+  static async create(data: CreateLinkInput & { order?: number }, createdById: string) {
     return prisma.link.create({
       data: {
         ...data,
@@ -66,7 +66,10 @@ export class LinkService {
 
     return prisma.link.findMany({
       where,
-      orderBy: { createdAt: 'desc' },
+      orderBy: [
+        { order: 'asc' },
+        { createdAt: 'desc' }
+      ],
       include: {
         createdBy: {
           select: {

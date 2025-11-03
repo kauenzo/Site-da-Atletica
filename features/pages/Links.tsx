@@ -8,9 +8,7 @@ const Links = async () => {
     where: {
       isActive: true,
     },
-    orderBy: {
-      createdAt: 'desc',
-    },
+    orderBy: [{ order: 'asc' }, { createdAt: 'desc' }],
   })
 
   return (

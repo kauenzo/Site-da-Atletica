@@ -39,7 +39,10 @@ export async function createLink(formData: FormData) {
 
   try {
     const nextOrder = await getNextOrder()
-    await LinkService.create({ ...validatedData, order: nextOrder }, session.user.id)
+    await LinkService.create(
+      { ...validatedData, order: nextOrder },
+      session.user.id
+    )
     revalidatePath('/admin/links')
   } catch (error) {
     throw new Error('Erro ao criar link')
@@ -153,6 +156,19 @@ export async function reorderLinks(ids: string[]) {
     revalidatePath('/admin/links')
   } catch (error) {
     throw new Error('Erro ao reordenar links')
+  }
+}
+
+export async function deleteLink(id: string) {
+  const session = await requireAuth()
+
+  try {
+    await prisma.link.delete({
+      where: { id },
+    })
+    revalidatePath('/admin/links')
+  } catch (error) {
+    throw new Error('Erro ao excluir link')
   }
 }
 

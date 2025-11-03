@@ -12,6 +12,17 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 import { DndContext, DragEndEvent, closestCenter } from '@dnd-kit/core'
 import {
   SortableContext,
@@ -19,10 +30,17 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { Edit, Eye, GripVertical, Link as LinkIcon, Plus } from 'lucide-react'
+import {
+  Edit,
+  Eye,
+  GripVertical,
+  Link as LinkIcon,
+  Plus,
+  Trash2,
+} from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { toggleLinkStatus } from '../actions'
+import { deleteLink, toggleLinkStatus } from '../actions'
 
 type Link = {
   id: string
@@ -52,9 +70,14 @@ type LinkListProps = {
 type SortableLinkItemProps = {
   link: Link
   onToggleStatus: (id: string) => void
+  onDelete: (id: string, label: string) => void
 }
 
-function SortableLinkItem({ link, onToggleStatus }: SortableLinkItemProps) {
+function SortableLinkItem({
+  link,
+  onToggleStatus,
+  onDelete,
+}: SortableLinkItemProps) {
   const {
     attributes,
     listeners,
@@ -131,6 +154,37 @@ function SortableLinkItem({ link, onToggleStatus }: SortableLinkItemProps) {
                 <LinkIcon className='w-4 h-4' />
               </Button>
             </Link>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button
+                  variant='outline'
+                  size='sm'
+                  className='text-red-600 hover:text-red-700 hover:bg-red-50'
+                >
+                  <Trash2 className='w-4 h-4' />
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Confirmar exclusão</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Tem certeza que deseja excluir o link "{link.label}"?
+                    <br />
+                    Esta ação não pode ser desfeita e todos os dados de cliques
+                    serão perdidos.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => onDelete(link.id, link.label)}
+                    className='bg-red-600 hover:bg-red-700'
+                  >
+                    Excluir
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
         </div>
       </CardContent>
@@ -161,6 +215,22 @@ export function LinkList({ links }: LinkListProps) {
       await toggleLinkStatus(id)
     } catch (error) {
       console.error('Erro ao alterar status:', error)
+    }
+  }
+
+  const handleDelete = async (id: string, label: string) => {
+    try {
+      // Remover do estado local imediatamente
+      setLocalLinks(localLinks.filter((link) => link.id !== id))
+
+      // Chamar a action de delete
+      await deleteLink(id)
+
+      console.log(`Link "${label}" excluído com sucesso`)
+    } catch (error) {
+      console.error('Erro ao excluir link:', error)
+      // Reverter mudanças locais em caso de erro
+      setLocalLinks(links)
     }
   }
 
@@ -305,6 +375,7 @@ export function LinkList({ links }: LinkListProps) {
                 key={link.id}
                 link={link}
                 onToggleStatus={handleToggleStatus}
+                onDelete={handleDelete}
               />
             ))}
           </div>

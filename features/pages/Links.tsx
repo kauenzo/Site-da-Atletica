@@ -9,7 +9,7 @@ const Links = async () => {
       isActive: true,
     },
     orderBy: {
-      createdAt: 'asc',
+      createdAt: 'desc',
     },
   })
 
